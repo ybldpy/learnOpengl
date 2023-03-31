@@ -2,73 +2,40 @@
 #include<GLFW/glfw3.h>
 #include<iostream>
 #include<std_image.h>
+#include"shaders.h"
 
 
 
-static const char* vertexShaderSource = "#version 330 core\n"
-"layout (location=0) in vec3 aPos;\n"
-"layout (location = 1) in vec3 aColor;\n"
-"layout (location=2) in vec2 aTexCoord;\n"
-"out vec2 TexCoord;\n"
-"void main()\n"
-"{\n"
-"gl_Position = vec4(aPos,1.0);\n"
-"TexCoord = aTexCoord;\n"
-"}\0";
-
-static const char* fragmentShaderSource = "#version 330 core\n"
-"out vec4 FragColor;\n"
-"void main(){\n"
-"FragColor = vec4(1.0f,0.5f,0.2f,1.0f);\n"
-"}\0";
 
 
-static const char* fragmentShaderSource2 = "#version 330 core\n"
-"out vec4 FragColor;\n"
-"void main(){\n"
-"FragColor = vec4(1.0f,0.3f,0.2f,1.0f);\n"
-"}\0";
 
+static void processInput(GLFWwindow* window,float* value) {
 
-static const char* fragmentShaderSource3 = "#version 330 core\n"
-"out vec4 FragColor;\n"
-"uniform vec4 myColor;\n"
-"layout(location = 1) in vec3 aColor;\n"
-"out vec4 FragColor;"
-"void main(){\n"
-"FragColor = vec4(aColor,1.0f);\n"
-"}\0";
+    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+        glfwSetWindowShouldClose(window, true);
 
+    if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+    {
+         *value+= 0.001f; // change this value accordingly (might be too slow or too fast based on system hardware)
+        if (*value >= 1.0f)
+            *value = 1.0f;
+    }
+    if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+    {
+        *value -= 0.001f; // change this value accordingly (might be too slow or too fast based on system hardware)
+        if (*value <= 0.0f)
+            *value = 0.0f;
+    }
 
-static const char* fragmentShaderSource4 = "#version 330 core\n"
-"out vec4 FragColor;\n"
-"in vec3 myColor;\n"
-"void main(){\n"
-"FragColor = vec4(myColor,1.0f);\n"
-"}\0";
-
-
-static const char* fragmentShaderSource5 = "#version 330 core\n"
-"out vec4 FragColor;\n"
-"in vec2 TexCoord;\n"
-"uniform sampler2D myTexture1;\n"
-"uniform sampler2D myTexture2;\n"
-"void main(){\n"
-"FragColor = mix(texture(myTexture1,TexCoord),texture(myTexture2,TexCoord),0.4);\n"
-"}\0";
-
-
-unsigned int createShader(const char* src,GLenum type) {
-    unsigned int shader;
-    shader = glCreateShader(type);
-    glShaderSource(shader, 1, &src, NULL);
-    glCompileShader(shader);
-    return shader;
 }
 
-int main() {
-    GLFWwindow* window;
 
+int main55() {
+
+    
+
+    GLFWwindow* window;
+    
     /* Initialize the library */
     if (!glfwInit())
         return -1;
@@ -89,7 +56,7 @@ int main() {
 
     float vertices[] = {
         //     ---- 位置 ----       ---- 颜色 ----     - 纹理坐标 -
-             0.8f,  0.8f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f,   // 右上
+             0.8f,  0.8f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0,1.0f,   // 右上
              0.8f, -0.8f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f,   // 右下
             -0.8f, -0.8f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // 左下
             -0.8f,  0.8f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f    // 左上
@@ -149,8 +116,8 @@ int main() {
     unsigned int textures[2];
     glGenTextures(2, textures);
     glBindTexture(GL_TEXTURE_2D, textures[0]);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, pic);
@@ -175,21 +142,23 @@ int main() {
     glUniform1i(glGetUniformLocation(program, "myTexture2"), 1);
 
     glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D,*textures);
+    glBindTexture(GL_TEXTURE_2D,textures[0]);
     glActiveTexture(GL_TEXTURE0 + 1);
-    glBindTexture(GL_TEXTURE_2D, *(textures + 1));
+    glBindTexture(GL_TEXTURE_2D, textures[1]);
 
+    float transpancy = 0.0f;
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
         /* Render here */
-        
+        processInput(window, &transpancy);
         glClear(GL_COLOR_BUFFER_BIT);
+        glUniform1f(glGetUniformLocation(program, "transpancy"), transpancy);
         //float curtme = glfwGetTime();
         //float greenValue = sin(curtme)+ 0.2f;
         //int vertexColorLocation = glGetUniformLocation(program, "myColor");
         //glUniform4f(vertexColorLocation, greenValue, greenValue+0.1f, greenValue+0.2f, 0.5f);
-
+        glUniform1f(glGetUniformLocation(program, "offset"), sin(glfwGetTime()));
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
         /* Swap front and back buffers */
         glfwSwapBuffers(window);

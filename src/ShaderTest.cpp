@@ -1,8 +1,7 @@
 #include<GL/glew.h>
 #include<GLFW/glfw3.h>
 #include<iostream>
-
-unsigned int createShader(const char* src, GLenum type);
+#include"shaders.h"
 
 
 void shaderPractice() {

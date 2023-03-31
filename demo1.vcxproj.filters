@@ -27,5 +27,22 @@
     <ClCompile Include="src\importDepend.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\shaderResource.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\shaderSrc.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\transformation.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\shaders.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\shderSrc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
