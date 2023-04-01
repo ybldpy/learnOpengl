@@ -76,13 +76,6 @@ int main55() {
     //std::cout << glGetUniformLocation(fs2, "myColor") << std::endl;
 
 
-    char infoLog[512];
-    int success;
-    glGetShaderiv(fs, GL_COMPILE_STATUS, &success);
-    if (!success) {
-        glGetShaderInfoLog(fs, 512, NULL, infoLog);
-        std::cout << infoLog << std::endl;
-    }
 
 
     int width, height, nrChannels;

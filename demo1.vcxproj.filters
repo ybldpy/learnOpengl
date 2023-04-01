@@ -41,8 +41,5 @@
     <ClInclude Include="src\shaders.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\shderSrc.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

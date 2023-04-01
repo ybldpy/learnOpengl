@@ -54,10 +54,38 @@ const char* fragmentShaderSource5 = "#version 330 core\n"
 "}\0";
 
 
+const char* fragmentShaderSource6 = "#version 330 core\n"
+"out vec4 FragColor;\n"
+"in vec2 TexCoord;\n"
+"uniform sampler2D myTexture1;\n"
+"uniform float transpancy;\n"
+"void main(){\n"
+"FragColor = texture(myTexture1,TexCoord);\n"
+"}\0";
+
+const char* transformationVertexShader = "#version 330 core\n;"
+"layout (location=0) in vec3 aPos;\n"
+"layout (location=1) in vec2 aTexCoord;\n"
+"uniform mat4 transform;\n"
+"out vec2 TexCoord;"
+"void main(){\n"
+"gl_Position = transform*vec4(aPos,1.0);\n"
+"TexCoord = aTexCoord;\n"
+"}\0";
+
+
 unsigned int createShader(const char* src, GLenum type) {
     unsigned int shader;
     shader = glCreateShader(type);
     glShaderSource(shader, 1, &src, NULL);
     glCompileShader(shader);
+
+    char infoLog[512];
+    int success;
+    glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
+    if (!success) {
+        glGetShaderInfoLog(shader, 512, NULL, infoLog);
+        std::cout << infoLog << std::endl;
+    }
     return shader;
 }
