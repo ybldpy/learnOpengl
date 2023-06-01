@@ -8,7 +8,7 @@
 #include"std_image.h"
 
 
-int main() {
+int main5() {
 	GLFWwindow* window;
 	if (!glfwInit()) {
 		return -1;

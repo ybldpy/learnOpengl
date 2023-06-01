@@ -139,9 +139,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\3DTest.cpp" />
     <ClCompile Include="src\importDepend.cpp" />
     <ClCompile Include="src\Main.cpp" />
-    <ClCompile Include="src\shaderResource.cpp" />
     <ClCompile Include="src\shaderSrc.cpp" />
     <ClCompile Include="src\ShaderTest.cpp" />
     <ClCompile Include="src\transformation.cpp" />

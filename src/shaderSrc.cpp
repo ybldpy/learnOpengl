@@ -50,7 +50,7 @@ const char* fragmentShaderSource5 = "#version 330 core\n"
 "uniform sampler2D myTexture2;\n"
 "uniform float transpancy;\n"
 "void main(){\n"
-"FragColor = mix(texture(myTexture1,TexCoord),texture(myTexture2,vec2(TexCoord.x,TexCoord.y)),transpancy);\n"
+"FragColor = mix(texture(myTexture1,TexCoord),texture(myTexture2,vec2(TexCoord.x,TexCoord.y)),0.2);\n"
 "}\0";
 
 
@@ -74,6 +74,19 @@ const char* transformationVertexShader = "#version 330 core\n;"
 "}\0";
 
 
+const char* threeDVertexShader = "#version 330 core\n"
+"layout (location=0) in vec3 aPos;\n"
+"layout (location=1) in vec2 aTexCoord;"
+"uniform mat4 transform;\n"
+"out vec2 TexCoord;"
+"void main(){\n"
+"gl_Position = transform*vec4(aPos,1.0);\n"
+"TexCoord = aTexCoord;\n"
+"}\0";
+
+
+const char* containerSrc = "D:\\openglcode\\demo1\\src\\container.jpg";
+const char* faceSrc = "D:\\openglcode\\demo1\\src\\awesomeface.png";
 unsigned int createShader(const char* src, GLenum type) {
     unsigned int shader;
     shader = glCreateShader(type);

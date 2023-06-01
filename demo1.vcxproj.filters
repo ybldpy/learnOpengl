@@ -27,13 +27,13 @@
     <ClCompile Include="src\importDepend.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\shaderResource.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="src\shaderSrc.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="src\transformation.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\3DTest.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
