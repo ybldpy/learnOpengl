@@ -1,5 +1,8 @@
+#pragma once
+#define GLEW_STATIC
 #include<GL/glew.h>
 #include<iostream>
+#include "shaders.h"
 
 const char* vertexShaderSource = "#version 330 core\n"
 "layout (location=0) in vec3 aPos;\n"
@@ -84,6 +87,27 @@ const char* threeDVertexShader = "#version 330 core\n"
 "TexCoord = aTexCoord;\n"
 "}\0";
 
+const char* vertexShaderSrc1="#version 330 core\n"
+                            "layout(location=0) in vec3 aPos;\n"
+                            "layout(location=1) in vec2 aTexCoord;\n"
+                            "uniform mat4 transformMatrix;\n"
+                            "out vec2 TexCoord;"
+                            "void main(){\n"
+                            "gl_Position = transformMatrix*vec4(aPos,1.0);\n"
+                            "TexCoord = aTexCoord;\n"
+                            "}\0";
+
+const char* light_cube_shader = "#version 330 core\n"
+                                "uniform vec3 light_color;\n"
+                                "uniform vec3 object_color;\n"
+                                "out vec4 FragColor;\n"
+                                "int main(){\n"
+                                "FragColor = vec4(light_color*object_color,1.0);\n}";
+const char* light_shader = "#version 330 core;\n"
+                           "out vec4 FragColor;\n"
+                           "int main(){\n"
+                           "FragColor = vec4(1.0);\n"
+                           "}"
 
 const char* containerSrc = "D:\\openglcode\\demo1\\src\\container.jpg";
 const char* faceSrc = "D:\\openglcode\\demo1\\src\\awesomeface.png";
@@ -102,3 +126,45 @@ unsigned int createShader(const char* src, GLenum type) {
     }
     return shader;
 }
+
+
+
+
+
+int Shader::getId() {
+    return id;
+}
+
+
+
+    Shader::Shader(const char* shaderSrc,GLenum type){
+        this->id = glCreateShader(type);
+        glShaderSource(this->id,1,&shaderSrc,NULL);
+        glCompileShader(this->id);
+        glGetShaderiv(this->id,GL_COMPILE_STATUS,&success);
+        if (!success){
+            glGetShaderInfoLog(this->id,infoLen,NULL,infoLog);
+            std::cout<<infoLog<<std::endl;
+        }
+    }
+
+
+    void Shader::attach(unsigned int pid){
+        glAttachShader(pid,this->id);
+    }
+
+    void Shader::deleteShader(){
+        glDeleteShader(this->id);
+    }
+
+    void Shader::setInt(const char* name,int value,unsigned int pid){
+        glUniform1i(glGetUniformLocation(pid,name),value);
+    }
+    void Shader::setBool(const char* name,bool value,unsigned int pid){
+        setInt(name,value,pid);
+    }
+    void Shader::setFloat(const char* name,float value,unsigned int pid){
+        glUniform1f(glGetUniformLocation(pid,name),value);
+    }
+
+

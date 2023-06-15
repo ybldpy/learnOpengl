@@ -1,13 +1,12 @@
-#include<GL/glew.h>
-#include<GLFW/glfw3.h>
-#include<glm/glm.hpp>
-#include<glm/gtc/matrix_transform.hpp>
-#include<glm/gtc/type_ptr.hpp>
-#include<iostream>
-#include"shaders.h"
-#include"std_image.h"
-
-int main() {
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <iostream>
+#include "shaders.h"
+#include "std_image.h"
+int ThreeDTest() {
 
 	GLFWwindow* window;
 	if (!glfwInit()) {
@@ -23,13 +22,18 @@ int main() {
 	glfwMakeContextCurrent(window);
 	glewInit();
 
-	unsigned int vs = createShader(threeDVertexShader, GL_VERTEX_SHADER);
-	unsigned int fs = createShader(fragmentShaderSource5, GL_FRAGMENT_SHADER);
+    Shader* vertexShader = new Shader(threeDVertexShader,GL_VERTEX_SHADER);
+    Shader* fragmentShader = new Shader(fragmentShaderSource5,GL_FRAGMENT_SHADER);
+
+//	unsigned int vs = createShader(threeDVertexShader, GL_VERTEX_SHADER);
+//	unsigned int fs = createShader(fragmentShaderSource5, GL_FRAGMENT_SHADER);
 	unsigned int program = glCreateProgram();
-	glAttachShader(program, vs);
-	glAttachShader(program, fs);
+    vertexShader->attach(program);
+    fragmentShader->attach(program);
 	glLinkProgram(program);
 	glUseProgram(program);
+    vertexShader->deleteShader();
+    fragmentShader->deleteShader();
 
 
 	float vertexes[] = {
