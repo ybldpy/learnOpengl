@@ -83,7 +83,7 @@ int main5() {
 		
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
-		//第二个箱子
+		
 		transformationMatrix = glm::mat4(1.0f);
 		double time = sin(glfwGetTime());
 		if (time < 0) { time = -time; }
@@ -99,6 +99,7 @@ int main5() {
 	}
 
 	glfwTerminate();
+    return 0;
 
 
 	

@@ -1,4 +1,4 @@
-#include<GL/glew.h>
+﻿#include<GL/glew.h>
 #include<iostream>
 
 const char* vertexShaderSource = "#version 330 core\n"
@@ -85,8 +85,8 @@ const char* threeDVertexShader = "#version 330 core\n"
 "}\0";
 
 
-const char* containerSrc = "D:\\openglcode\\demo1\\src\\container.jpg";
-const char* faceSrc = "D:\\openglcode\\demo1\\src\\awesomeface.png";
+const char* containerSrc = "D:\\opengl\\src\\container.jpg";
+const char* faceSrc = "D:\\opengl\\src\\awesomeface.png";
 unsigned int createShader(const char* src, GLenum type) {
     unsigned int shader;
     shader = glCreateShader(type);
@@ -99,6 +99,7 @@ unsigned int createShader(const char* src, GLenum type) {
     if (!success) {
         glGetShaderInfoLog(shader, 512, NULL, infoLog);
         std::cout << infoLog << std::endl;
+
     }
     return shader;
 }
