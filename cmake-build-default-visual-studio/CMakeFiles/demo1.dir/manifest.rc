@@ -1,0 +1,2 @@
+#pragma code_page(65001)
+1 /* CREATEPROCESS_MANIFEST_RESOURCE_ID */ 24 /* RT_MANIFEST */ "D:/opengl/cmake-build-default-visual-studio/CMakeFiles/demo1.dir/embed.manifest"

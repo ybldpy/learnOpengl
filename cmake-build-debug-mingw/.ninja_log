@@ -1,0 +1,22 @@
+# ninja log v5
+18	79	7087823853076842	CMakeFiles/demo1.dir/src/Main.cpp.obj	de0c1403a5d6a9bc
+1576	1802	7087823870296338	CMakeFiles/demo1.dir/src/Util.cpp.obj	4df9fff977900eab
+1030	1990	7087823872173159	CMakeFiles/demo1.dir/src/Triangle.cpp.obj	2e26e5bf463fd42e
+4	1030	7087823862533168	CMakeFiles/demo1.dir/src/importDepend.cpp.obj	5f1a63412c75cc24
+14	1433	7087823866600273	CMakeFiles/demo1.dir/src/ShaderTest.cpp.obj	1125c5781852e358
+1434	2269	7087823874968291	CMakeFiles/demo1.dir/src/Camera.cpp.obj	e6bb7513fe1f0b
+79	1581	7087823868002266	CMakeFiles/demo1.dir/src/CoordinateSystem.cpp.obj	2b3aff95509c44e4
+22	1576	7087823867802801	CMakeFiles/demo1.dir/src/transformation.cpp.obj	ff1ea48ebd647c17
+11	1444	7087823866640165	CMakeFiles/demo1.dir/src/shaderSrc.cpp.obj	b9e623db143db7c2
+7	1608	7087823868171814	CMakeFiles/demo1.dir/src/3DTest.cpp.obj	792e3e32744855e2
+1445	2380	7087823876080760	CMakeFiles/demo1.dir/src/Light.cpp.obj	bbde5d0d8c3f8b52
+4	974	7087828040120912	CMakeFiles/demo1.dir/src/importDepend.cpp.obj	5f1a63412c75cc24
+16	980	7087828040210675	CMakeFiles/demo1.dir/src/shaderSrc.cpp.obj	b9e623db143db7c2
+8	1018	7087828040549773	CMakeFiles/demo1.dir/src/ShaderTest.cpp.obj	1125c5781852e358
+19	1153	7087828041996254	CMakeFiles/demo1.dir/src/CoordinateSystem.cpp.obj	2b3aff95509c44e4
+12	1172	7087828042235617	CMakeFiles/demo1.dir/src/transformation.cpp.obj	ff1ea48ebd647c17
+1	1195	7087828042305430	CMakeFiles/demo1.dir/src/3DTest.cpp.obj	792e3e32744855e2
+1018	1296	7087828043513555	CMakeFiles/demo1.dir/src/Util.cpp.obj	4df9fff977900eab
+974	1828	7087828048835688	CMakeFiles/demo1.dir/src/Triangle.cpp.obj	2e26e5bf463fd42e
+982	1884	7087828049384199	CMakeFiles/demo1.dir/src/Camera.cpp.obj	e6bb7513fe1f0b
+1154	2107	7087828051637522	CMakeFiles/demo1.dir/src/Light.cpp.obj	bbde5d0d8c3f8b52
