@@ -3,9 +3,11 @@
 //
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+#include "Util.h"
+#include "std_image.h"
 
 
-bool init_window(GLFWwindow** glfWwindow,int width=800,int height=800,const char* name="Window"){
+bool init_window(GLFWwindow** glfWwindow,int width,int height,const char* name){
     if (!glfwInit()){
         return false;
     }
@@ -18,3 +20,15 @@ bool init_window(GLFWwindow** glfWwindow,int width=800,int height=800,const char
     glewInit();
     return true;
 }
+
+
+
+unsigned char* load_texture(const char* file_path,const bool flip,int* width, int* height,int* nr_channels,int desired_channels){
+
+    stbi_set_flip_vertically_on_load(flip);
+    unsigned char* data = stbi_load(file_path,width,height,nr_channels,desired_channels);
+    return data;
+
+}
+
+

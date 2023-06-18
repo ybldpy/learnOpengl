@@ -87,7 +87,6 @@ static void rotate_mouse(GLFWwindow* glfWwindow,double xpos,double ypos){
 //}
 
 
-
 void rotate_camera(){
 
     GLFWwindow* glfW_window;

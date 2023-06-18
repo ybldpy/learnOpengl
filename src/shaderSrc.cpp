@@ -1,4 +1,4 @@
-#pragma once
+
 #define GLEW_STATIC
 #include<GL/glew.h>
 #include<iostream>
@@ -28,7 +28,7 @@ const char* fragmentShaderSource2 = "#version 330 core\n"
 "}\0";
 
 
-static const char* fragmentShaderSource3 = "#version 330 core\n"
+const char* fragmentShaderSource3 = "#version 330 core\n"
 "out vec4 FragColor;\n"
 "uniform vec4 myColor;\n"
 "layout(location = 1) in vec3 aColor;\n"
@@ -101,13 +101,13 @@ const char* light_cube_shader = "#version 330 core\n"
                                 "uniform vec3 light_color;\n"
                                 "uniform vec3 object_color;\n"
                                 "out vec4 FragColor;\n"
-                                "int main(){\n"
+                                "void main(){\n"
                                 "FragColor = vec4(light_color*object_color,1.0);\n}";
-const char* light_shader = "#version 330 core;\n"
+const char* light_shader = "#version 330 core\n"
                            "out vec4 FragColor;\n"
-                           "int main(){\n"
+                           "void main(){\n"
                            "FragColor = vec4(1.0);\n"
-                           "}"
+                           "}";
 
 const char* containerSrc = "D:\\openglcode\\demo1\\src\\container.jpg";
 const char* faceSrc = "D:\\openglcode\\demo1\\src\\awesomeface.png";

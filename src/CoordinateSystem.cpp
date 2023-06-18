@@ -12,7 +12,6 @@
 #include "Util.h"
 
 void smile_tube(){
-
     GLFWwindow* glfW_window;
     init_window(&glfW_window,800,800,"smile_tube");
     unsigned int shader_program_id = glCreateProgram();

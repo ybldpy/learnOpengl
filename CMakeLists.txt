@@ -10,7 +10,7 @@ include_directories(Dependencies/GLFW/include)
 
 add_executable(demo1
         src/3DTest.cpp
-        src/importDepend.cpp
+        src/stbi_img_impl.cpp
         src/Main.cpp
         src/shaders.h
         src/shaderSrc.cpp
