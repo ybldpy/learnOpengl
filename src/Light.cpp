@@ -173,7 +173,7 @@ void light_texture(){
         object.setMat4("model_view",camera.GetViewMatrix()*object_model);
         object.setMat4("trans_normal",glm::transpose(glm::inverse(camera.GetViewMatrix()*object_model)));
         //object.setVec3("light_model_pos",lighter_location);
-        object.setVec3("light.pos",camera.GetViewMatrix()*glm::vec4(camera.Position,1.0f));
+        object.setVec3("light.pos",glm::vec3(camera.GetViewMatrix()*glm::vec4(lighter_location,1.0f)));
         object.setVec3("light.ambient",glm::vec3(1.0f));
         object.setVec3("light.diffuse",glm::vec3(1.0f));
         object.setVec3("light.specular",glm::vec3(1.0f));
